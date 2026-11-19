@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Runner 3D</title>
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Pantalla de carga -->
+    <div id="loading" class="screen">
+      <div class="panel small"><p>Cargando escenario…</p></div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div class="hud-block hud-left">
+        <div class="stat big">
+          <span class="label">PUNTOS</span>
+          <span class="value" id="hud-score">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">DISTANCIA</span>
+          <span class="value"><span id="hud-distance">0</span> m</span>
+        </div>
+      </div>
+      <div class="hud-block hud-right">
+        <div class="stat coins" id="hud-coins-box">
+          <span class="coin-icon"></span>
+          <span class="value" id="hud-coins">0</span>
+        </div>
+        <div class="stat speed">
+          <span class="label">VELOCIDAD</span>
+          <span class="value"><span id="hud-speed">0</span> km/h</span>
+          <div class="speed-bar"><div id="hud-speed-bar"></div></div>
+        </div>
+        <button id="btn-pause" class="icon-btn" title="Pausa (Esc)" aria-label="Pausa">❚❚</button>
+      </div>
+    </div>
+
+    <!-- Menú principal -->
+    <section id="screen-menu" class="screen hidden">
+      <div class="panel">
+        <h1>TRAIN<span>RUNNER</span></h1>
+        <p class="subtitle">Corre por la vía, esquiva los trenes y reúne monedas</p>
+        <button id="btn-play" class="btn primary big">▶ JUGAR</button>
+        <p class="record">Récord: <strong id="menu-record">0</strong></p>
+        <ul class="controls-help">
+          <li><kbd>←</kbd> <kbd>→</kbd> Cambiar de carril</li>
+          <li><kbd>↑</kbd> / <kbd>Espacio</kbd> Saltar</li>
+          <li><kbd>↓</kbd> Deslizarse</li>
+          <li><kbd>Esc</kbd> Pausa</li>
+          <li><kbd>M</kbd> Sonido</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pausa -->
+    <section id="screen-pause" class="screen hidden">
+      <div class="panel">
+        <h2>PAUSA</h2>
+        <button id="btn-resume" class="btn primary">Reanudar</button>
+        <button id="btn-restart-pause" class="btn">Reiniciar</button>
+        <button id="btn-menu-pause" class="btn">Menú principal</button>
+      </div>
+    </section>
+
+    <!-- Game Over -->
+    <section id="screen-gameover" class="screen hidden">
+      <div class="panel">
+        <h2>GAME OVER</h2>
+        <p id="over-new" class="new-record hidden">¡Nuevo récord!</p>
+        <div class="results">
+          <div><span class="label">PUNTUACIÓN</span><span class="value" id="over-score">0</span></div>
+          <div><span class="label">DISTANCIA</span><span class="value"><span id="over-distance">0</span> m</span></div>
+          <div><span class="label">MONEDAS</span><span class="value" id="over-coins">0</span></div>
+          <div><span class="label">RÉCORD</span><span class="value" id="over-record">0</span></div>
+        </div>
+        <button id="btn-again" class="btn primary big">↻ JUGAR DE NUEVO</button>
+        <button id="btn-menu-over" class="btn">Menú principal</button>
+      </div>
+    </section>
+
+    <!-- Error -->
+    <section id="screen-error" class="screen hidden">
+      <div class="panel">
+        <h2>Ocurrió un problema</h2>
+        <p id="error-msg"></p>
+        <button class="btn primary" onclick="location.reload()">Recargar</button>
+      </div>
+    </section>
+
+    <div id="toast" class="hidden"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
